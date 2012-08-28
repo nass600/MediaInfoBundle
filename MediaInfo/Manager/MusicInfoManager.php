@@ -19,44 +19,19 @@ class MusicInfoManager
 	}
 
 	/**
-	 * Performs a search of the $query text against the web service and outputs the result in the given $format
-	 *
-	 * @param string $query
-	 * @param string $format
-	 * @return mixed
-	 */
-	public function searchLyrics($query, $format){
-		$results = $this->adapter->searchLyrics($query, $format);
-
-		$errors = $this->hasErrors($results);
-
-		return (!$errors) ? $results : null;
-	}
-
-	/**
 	 * Gets the lyrics through the adapter API given the track $id and outputs the result in the given $format
 	 *
 	 * @param string $id
 	 * @param string $format
 	 * @return mixed
 	 */
-	public function getLyrics($id, $format){
-		$results = $this->adapter->getLyrics($id, $format);
+	public function getAlbumInfo(array $parameters)
+    {
+        if (!isset($parameters['format'])) {
+            $parameters['format'] = 'json';
+        }
 
-		$errors = $this->hasErrors($results);
-
-		return (!$errors) ? $results : null;
-	}
-
-	/**
-	 * Searches for the $query text and retrieves in one step the best lyrics
-	 *
-	 * @param string $query
-	 * @param string $format
-	 * @return mixed
-	 */
-	public function getBestLyrics($query, $format){
-		$results = $this->adapter->getBestLyrics($query, $format);
+		$results = $this->adapter->getAlbumInfo($parameters);
 
 		$errors = $this->hasErrors($results);
 

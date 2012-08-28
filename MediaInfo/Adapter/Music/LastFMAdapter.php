@@ -14,10 +14,13 @@ use Nass600\MediaInfoBundle\MediaInfo\Adapter\AbstractAdapter;
  */
 class LastFMAdapter extends AbstractAdapter implements AdapterInterface
 {
-	const API_URL = "http://webservices.lyrdb.com/dev/function.php?parameters";
+//	const API_URL = "http://webservices.lyrdb.com/dev/function.php?parameters";
+	const API_URL = "http://ws.audioscrobbler.com/2.0/";
+
+    const API_KEY = "1fb73f684a6a41f4286ec94db6845e00";
+
 	const SEARCH_FUNCTION = "lookup";
-	const GET_FUNCTION = "getlyr";
-	const GET_BEST_FUNCTION = "bestlyrics";
+	const GET_FUNCTION = "album.getInfo";
 
 	protected $validFormats = array('text', 'xml', 'json');
 
@@ -34,16 +37,22 @@ class LastFMAdapter extends AbstractAdapter implements AdapterInterface
 		return $data;
 	}
 
-	public function getLyrics($id, $format)
+	public function getAlbumInfo(array $parameters)
 	{
-		$this->setParameter('q', $id);
-		$this->setParameter('agent', 'trial');
-		$this->setOutputFormat($format);
+		$this->setParameter('method', self::GET_FUNCTION);
+		$this->setParameter('api_key', self::API_KEY);
 
-		$url = str_replace('function', self::GET_FUNCTION, $this->getUrl());
+        foreach ($parameters as $key => $value) {
+            $this->setParameter($key, $value);
+        }
+
+		$url = $this->getUrl();
 
 		$data = $this->getFeed($url);
-
+echo "<pre>";
+var_dump(json_decode($data));
+echo "</pre>";
+die;
 		return $data;
 	}
 
@@ -62,7 +71,7 @@ class LastFMAdapter extends AbstractAdapter implements AdapterInterface
 
 	public function getUrl()
     {
-        return str_replace("parameters", $this->getHttpParameters(), self::API_URL);
+        return self::API_URL."?{$this->getHttpParameters()}";
     }
 
 	/**
@@ -76,6 +85,6 @@ class LastFMAdapter extends AbstractAdapter implements AdapterInterface
 		if (!in_array($format, $this->validFormats))
 			throw new \Exception('Invalid output format');
 
-		$this->setParameter('output', $format);
+		$this->setParameter('format', $format);
 	}
 }

@@ -12,14 +12,6 @@ namespace Nass600\MediaInfoBundle\MediaInfo\Adapter\Music;
  */
 interface AdapterInterface
 {
-	/**
-	 * Performs a search of the $query text against the web service and outputs the result in the given $format
-	 *
-	 * @abstract
-	 * @param string $query
-	 * @param string $format
-	 */
-    public function searchLyrics($query, $format);
 
 	/**
 	 * Gets the lyrics through the adapter API given the track $id and outputs the result in the given $format
@@ -29,7 +21,7 @@ interface AdapterInterface
 	 * @param string $format
 	 * @return mixed
 	 */
-    public function getLyrics($id, $format);
+    public function getAlbumInfo(array $parameters);
 
 	/**
 	 * Builds the url with the object parameters
