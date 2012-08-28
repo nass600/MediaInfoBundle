@@ -1,18 +1,16 @@
 <?php
 
-namespace Nass600\MediaInfoBundle\MediaInfo\Lyrics\Manager;
-
-use Nass600\LyricsBundle\Adapter\AdapterInterface;
+namespace Nass600\MediaInfoBundle\MediaInfo\Manager;
 
 /**
- * LyricsManager
+ * MusicInfoManager
  *
  * @package Nass600LyricsBundle
  * @subpackage Model
  * @author Ignacio Velázquez Gómez <ivelazquez85@gmail.com>
  * @copyright Ignacio Velázquez Gómez
  */
-class LyricsManager
+class MusicInfoManager
 {
 	protected $adapter;
 

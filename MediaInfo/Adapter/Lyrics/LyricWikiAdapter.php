@@ -1,6 +1,8 @@
 <?php
 
-namespace Nass600\MediaInfoBundle\Lyrics\Adapter;
+namespace Nass600\MediaInfoBundle\MediaInfo\Adapter\Lyrics;
+
+use Nass600\MediaInfoBundle\MediaInfo\Adapter\AbstractAdapter;
 
 class LyricWikiAdapter extends AbstractAdapter implements AdapterInterface
 {

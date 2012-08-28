@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+	<parameters>
+		<parameter key="lyrics_manager.class">Nass600\MediaInfoBundle\MediaInfo\Manager\LyricsInfoManager</parameter>
+    <parameter key="music_manager.class">Nass600\MediaInfoBundle\MediaInfo\Manager\MusicInfoManager</parameter>
+	</parameters>
+
+	<services>
+		<service id="nass600_media_info.lyrics_info.manager" class="%lyrics_manager.class%">
+			<argument key="provider">%nass600_media_info.provider.lyrics%</argument>
+		</service>
+    <service id="nass600_media_info.music_info.manager" class="%music_manager.class%">
+  			<argument key="provider">%nass600_media_info.provider.music%</argument>
+  		</service>
+	</services>
+</container>

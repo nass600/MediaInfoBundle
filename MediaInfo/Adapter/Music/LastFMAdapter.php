@@ -1,16 +1,18 @@
 <?php
 
-namespace Nass600\MediaInfoBundle\Lyrics\Adapter;
+namespace Nass600\MediaInfoBundle\MediaInfo\Adapter\Music;
+
+use Nass600\MediaInfoBundle\MediaInfo\Adapter\AbstractAdapter;
 
 /**
- * LyrDBAdapter
+ * LastFMAdapter
  *
- * @package Nass600LyricsBundle
+ * @package Nass600MediaInfoBundle
  * @subpackage Adapter
  * @author Ignacio Velázquez Gómez <ivelazquez85@gmail.com>
  * @copyright Ignacio Velázquez Gómez
  */
-class LyrDBAdapter extends AbstractAdapter implements AdapterInterface
+class LastFMAdapter extends AbstractAdapter implements AdapterInterface
 {
 	const API_URL = "http://webservices.lyrdb.com/dev/function.php?parameters";
 	const SEARCH_FUNCTION = "lookup";

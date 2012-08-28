@@ -1,6 +1,6 @@
 <?php
 
-namespace Nass600\MediaInfoBundle\Lyrics\Adapter;
+namespace Nass600\MediaInfoBundle\MediaInfo\Adapter;
 
 /**
  * AbstractAdapter
